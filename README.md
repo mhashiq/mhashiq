@@ -4,7 +4,7 @@
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&duration=2800&pause=900&color=D94C4C&center=true&vCenter=true&width=640&lines=I+build+world+models+for+the+human+heart.;Snapshot+%E2%86%92+latent+state+%E2%86%92+future.;Predict+the+dynamics%2C+not+the+noise.;Inductive+bias+is+a+bet." alt="typing intro" />
 
-<img src="./ecg.svg" width="100%" alt="heartbeat" />
+<img src="https://raw.githubusercontent.com/USERNAME/USERNAME/main/ecg.svg" width="100%" alt="heartbeat" />
 
 [![Website](https://img.shields.io/badge/mehedihassan.site-111111?style=for-the-badge&logo=googlechrome&logoColor=white)](https://mehedihassan.site/)
 
