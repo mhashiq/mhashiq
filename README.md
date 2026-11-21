@@ -1,10 +1,10 @@
 <div align="center">
 
-# Mehedi Hassan
+# Md. Mehedi Hassan
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&duration=2800&pause=900&color=D94C4C&center=true&vCenter=true&width=640&lines=I+build+world+models+for+the+human+heart.;Snapshot+%E2%86%92+latent+state+%E2%86%92+future.;Predict+the+dynamics%2C+not+the+noise.;Inductive+bias+is+a+bet." alt="typing intro" />
 
-<img src="https://raw.githubusercontent.com/USERNAME/USERNAME/main/ecg.svg" width="100%" alt="heartbeat" />
+<img src="https://raw.githubusercontent.com/mhashiq/mhashiq/main/ecg.svg" width="100%" alt="heartbeat" />
 
 [![Website](https://img.shields.io/badge/mehedihassan.site-111111?style=for-the-badge&logo=googlechrome&logoColor=white)](https://mehedihassan.site/)
 
@@ -20,6 +20,26 @@ I build **world models**: they learn a hidden state of the body and **how it mov
 ```
  ECG(t) ──► encoder ──► z_t ──► dynamics ──► z_t+1 ──► z_t+2 ──► … ──► what happens next
 ```
+
+### 🧮 The idea in four equations
+
+**1. Encode** an observation $x_t$ (for example, a 12-lead ECG) into a latent state:
+
+$$z_t = f_\theta(x_t)$$
+
+**2. Step forward** in latent space, optionally conditioned on an intervention $a_t$:
+
+$$\hat{z}_{t+1} = g_\phi(z_t,\ a_t)$$
+
+**3. Roll out** $k$ steps into the future and read out a clinical prediction:
+
+$$\hat{z}_{t+k} = g_\phi^{(k)}(z_t), \qquad \hat{y}_{t+k} = h_\psi(\hat{z}_{t+k})$$
+
+**4. Train** by matching predicted states to encoded future states, not raw signals:
+
+$$\mathcal{L} = \sum_{k=1}^{K} \big\lVert \hat{z}_{t+k} - \mathrm{sg}\big[f_\theta(x_{t+k})\big] \big\rVert_2^2 \ + \ \lambda\, \mathcal{L}_{\text{task}}$$
+
+<sub>$\mathrm{sg}[\cdot]$ = stop-gradient. Predicting in latent space spends capacity on dynamics instead of noise and baseline wander.</sub>
 
 ### 🧭 Beliefs I build on
 
@@ -40,7 +60,7 @@ I build **world models**: they learn a hidden state of the body and **how it mov
 
 - [ ] Calibrated multi-step forecasts of patient state
 - [ ] One latent space for signals, notes and labs
-- [ ] "What if?" counterfactuals for treatment decisions
+- [ ] "What if?" counterfactuals: compare $g_\phi(z_t, a)$ vs $g_\phi(z_t, a')$
 - [ ] Validation across hospitals and devices
 
 <div align="center">
